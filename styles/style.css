@@ -11,6 +11,42 @@
 */
 
 .page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--font-general), sans-serif;
+  font-variation-settings: 'wght' var(--font-weight-text);
+  padding-top: 100px;
+  text-transform: uppercase;
 }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  border: 1px solid #000;
+  width: clamp(375px, 80vw, 700px);
+  font-family: var(--font-accent), fantasy;
+  padding-top: clamp(120px, calc(120px + 0.0246 * (100vw - 375px)), 128px);
+  padding-bottom: clamp(120px, calc(120px + 0.0246 * (100vw - 375px)), 128px);
+}
+
+.header__title {
+  font-size: clamp(49px, 6vw, 65px);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+
+}
+
+.header__subtitle {
+  font-size: clamp(14px, 2vw, 23px);
+  margin: 0;
+}
+
+
