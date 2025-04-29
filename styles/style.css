@@ -47,15 +47,11 @@
   font-size: clamp(14px, 2vw, 23px);
 }
 
-.block_card__list{
+.block_card__list {
   padding-top: 102px;
   display: flex;
   flex-direction: column;
   gap: 50px;
-}
-
-.block_card__item {
-
 }
 
 .block_card__title {
@@ -118,9 +114,6 @@
   align-items: center;
 }
 
-.block_card__button-heart {
-}
-
 .card__like-button {
   border: 2px solid #000;
   width: 130px;
@@ -139,7 +132,7 @@
 }
 
 .button__save {
-  height: clamp(55px, calc(84px - 29 * (100vw - 375px) / 1065), 84px);;
+  height: clamp(55px, calc(84px - 29 * (100vw - 375px) / 1065), 84px);
   width: clamp(306px, calc(306px + 29 * (100vw - 375px) / 1065), 335px);
   border: 2px solid #000;
   display: flex;
@@ -151,7 +144,6 @@
   height: 21px;
   width: 21px;
 }
-
 
 @media screen and (max-width: 376px) {
   .section {
