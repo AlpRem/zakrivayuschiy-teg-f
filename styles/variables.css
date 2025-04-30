@@ -23,4 +23,7 @@
     --color__button-accent: #fff;
 
     --border: 2px solid #000;
+
+    --contour-color: #000;
+    --animation-fill-color: red;
 }
