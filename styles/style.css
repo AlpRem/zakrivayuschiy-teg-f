@@ -10,6 +10,7 @@
 
 */
 
+/* ======= Общие стили для самой страницы======= */
 .page {
   display: flex;
   flex-direction: column;
@@ -23,12 +24,67 @@
   background-repeat: no-repeat;
 }
 
+
+
 .section {
   width: clamp(375px, calc(30.51vw + 261px), 700px);
-  border: 2px solid #000;
+  border: var(--border);
   background-color: white;
 }
+/* !======= Конец общих стилей для самой страницы =======! */
 
+/* ======= Стилизация кнопок (общие стили) ======= */
+.button {
+  position: relative;
+  background: #fff;
+  border: none;
+  padding: 0;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background__button-accent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.button:hover, .block_card__button-heart:hover {
+  cursor: pointer;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 0 #000;
+}
+
+.button__text {
+  font-family: var(--font-accent), sans-serif;
+  font-size: 14px;
+  position: relative;
+  color: var(--color__button-accent);
+  mix-blend-mode: difference;
+  transition: color 0.3s ease;
+  z-index: 2;
+}
+/* !======= Конец стилизации кнопок (общие стили) =======! */
+
+/* ======= Стилизация заголовка (блока "Закрывающий тег") ======= */
 .header {
   display: flex;
   flex-direction: column;
@@ -51,7 +107,9 @@
 .header__subtitle {
   font-size: clamp(14px, 2vw, 23px);
 }
+/* !====== Конец стилизации заголовка (блока "Закрывающий тег") ======! */
 
+/* ======= Стилизация блока карточки ======= */
 .block_card__list {
   padding-top: 102px;
   display: flex;
@@ -109,27 +167,31 @@
   justify-self: right;
 }
 
-.button {
+/* !====== Стилизация кнопки с сердцем ======! */
+.block_card__button-heart {
   background: #fff;
-  border: none;
+  border: 2px solid transparent;
   padding: 0;
   height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  transition: border-color 0.3s ease;
 }
+
+.block_card__button-heart:focus-visible {
+  outline: none;
+  border-color: #000;
+}
+/* !====== Конец стилизации кнопки с сердцем ======! */
 
 .card__like-button {
-  border: 2px solid #000;
+  border: var(--border);
   width: 130px;
 }
+/* !====== Конец стилизации блока карточки ======! */
 
-.button__text {
-  font-family: var(--font-accent), sans-serif;
-  font-size: 14px;
-}
-
+/* ====== Стилизация блока "Сохранить на память" ====== */
 .section_save {
   padding-top: 54px;
   padding-bottom: 100px;
@@ -140,19 +202,30 @@
 .button__save {
   height: clamp(55px, calc(84px - 29 * (100vw - 375px) / 1065), 84px);
   width: clamp(306px, calc(306px + 29 * (100vw - 375px) / 1065), 335px);
-  border: 2px solid #000;
+  border: var(--border);
   display: flex;
   gap: 4px;
   flex-direction: row;
 }
 
+/* ====== Стилизация иконки дискеты ====== */
 .floppy {
   height: 21px;
   width: 21px;
+  mix-blend-mode: difference;
+  position: relative;
+  z-index: 2;
 }
 
+.floppy use {
+  fill: var(--color__button-accent);
+}
+/* !===== Конец стилизации иконки дискеты =====! */
+/* !====== Конец стилизации блока "Сохранить на память" ======! */
+
+/* ====== Стилизация диалогового окна ====== */
 .dialog__save {
-  border: 2px solid #000;
+  border: var(--border);
   padding: 30px;
   width: clamp(341px, calc(337px + 1.13vw), 353px);
   transition: opacity 0.3s ease-in-out;
@@ -190,11 +263,13 @@
   font-family: var(--font-accent), sans-serif;
   font-size: 14px;
   text-transform: uppercase;
-  border: 2px solid #000;
+  border: var(--border);
   width: 100%;
   height: 38px;
 }
+/* !===== Конец стилизации диалогового окна =====! */
 
+/* ====== Набор фильтров - 7 штук ====== */
 .filter_start {
   filter: blur(10px);
 }
@@ -222,8 +297,10 @@
 .filter_now {
   filter: saturate(58%) blur(10px);
 }
+/* !===== Конец набора фильтров =====! */
 
-@media screen and (max-width: 376px) {
+/* ===== Блок для адаптивной верстки ===== */
+@media (width <= 375px) {
   .section {
     width: 100vw;
   }
@@ -239,5 +316,6 @@
     width: 28px;
   }
 }
+/* !==== Блок для адаптивной верстки ====! */
 
 

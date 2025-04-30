@@ -18,4 +18,9 @@
             linear-gradient(
                     180deg, #e7e7e7 0.01%, #1a1a1a 100%
             );
+
+    --background__button-accent: #000;
+    --color__button-accent: #fff;
+
+    --border: 2px solid #000;
 }
