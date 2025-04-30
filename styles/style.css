@@ -60,7 +60,7 @@
   z-index: 1;
 }
 
-.button:hover, .block_card__button-heart:hover {
+.button:hover {
   cursor: pointer;
 }
 
@@ -168,7 +168,7 @@
 }
 
 /* !====== Стилизация кнопки с сердцем ======! */
-.block_card__button-heart {
+.card__icon-button {
   background: #fff;
   border: 2px solid transparent;
   padding: 0;
@@ -179,10 +179,100 @@
   transition: border-color 0.3s ease;
 }
 
-.block_card__button-heart:focus-visible {
+.card__icon-button:hover {
+  cursor: pointer;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.core, .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.card__icon-button:hover .core {
+  fill: var(--contour-color);
+  transition-delay: 0s;
+}
+
+.card__icon-button:not(:hover) .core,
+.card__icon-button:not(:active) .core {
+  transition-delay: 0.03s;
+}
+
+.card__icon-button:hover .main-body {
+  fill: var(--contour-color);
+  transition-delay: 0s;
+}
+
+.card__icon-button:not(:hover) .main-body,
+.card__icon-button:not(:active) .main-body {
+  transition-delay: 0.05s;
+}
+
+.card__icon-button:active .core,
+.card__icon-button:active .main-body {
+  fill: var(--animation-fill-color);
+}
+
+.card__icon-button:focus-visible {
   outline: none;
   border-color: #000;
 }
+
+/* ====== Блок анимации ====== */
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.03s;
+}
+
+.like-icon:not(.is-liked) .core {
+  transition: fill 0.3s linear;
+  transition-delay: 0.03s;
+}
+
+.like-icon:not(.is-liked) .main-body {
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon:not(.is-liked) .contour {
+  transition: fill 0.1s linear;
+}
+
+.like-icon.is-liked .heart {
+  animation: heart-scale 0.3s ease-in 0.1s 1;
+  transform-origin: center;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-show 0.3s ease-in 0.3s 1;
+}
+
+@keyframes heart-scale {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+@keyframes sparks-show {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* !====== Конец блока анимации ======! */
+
 /* !====== Конец стилизации кнопки с сердцем ======! */
 
 .card__like-button {
@@ -298,14 +388,6 @@
   filter: saturate(58%) blur(10px);
 }
 /* !===== Конец набора фильтров =====! */
-
-/* ===== Стилизация иконки сердца ===== */
-.sparks {
-  opacity: 0;
-}
-
-/* !==== Конец стилизации иконки сердца ====! */
-
 
 /* ===== Блок для адаптивной верстки ===== */
 @media (width <= 375px) {
