@@ -211,15 +211,15 @@
   filter: invert(0.7);
 }
 
-.filter_strategy{
+.filter_strategy {
   filter: grayscale(0.7);
 }
 
-.filter_stop{
+.filter_stop {
   filter: saturate(158%);
 }
 
-.filter_now{
+.filter_now {
   filter: saturate(58%) blur(10px);
 }
 
