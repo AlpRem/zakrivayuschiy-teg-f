@@ -121,7 +121,7 @@
   right: clamp(13px, calc(8.77px + 1.13vw), 25px);
   font-family: var(--font-accent), fantasy;
   font-size: 14px;
-  text-transform: lowercase;
+  /*text-transform: lowercase;*/
   opacity: 0.5;
   -webkit-text-stroke: 1px #fff;
   text-stroke: 1px #fff;
