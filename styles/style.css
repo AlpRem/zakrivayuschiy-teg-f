@@ -16,7 +16,7 @@
   flex-direction: column;
   align-items: center;
   font-family: var(--font-general), sans-serif;
-  font-variation-settings: 'wght' var(--font-weight-text);
+  font-variation-settings: 'wght' var(--font-weight-text, 400);
   padding-top: 100px;
   background: var(--page-background);
   background-attachment: fixed;
@@ -26,60 +26,9 @@
 
 .section {
   width: clamp(375px, calc(30.51vw + 261px), 700px);
-  border: var(--border);
   background-color: white;
 }
 /* !======= Конец общих стилей для самой страницы =======! */
-
-/* ======= Стилизация кнопок (общие стили) ======= */
-.button {
-  position: relative;
-  background: #fff;
-  border: none;
-  padding: 0;
-  height: 38px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: box-shadow 0.3s ease;
-  overflow: hidden;
-}
-
-.button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--background__button-accent);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease-in-out;
-}
-
-.button:hover {
-  cursor: pointer;
-}
-
-.button:hover::before {
-  transform: translateX(0);
-}
-
-.button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 0 #000;
-}
-
-.button__text {
-  font-family: var(--font-accent), sans-serif;
-  font-size: 14px;
-  position: relative;
-  color: var(--color__button-accent);
-  mix-blend-mode: difference;
-  transition: color 0.3s ease;
-  z-index: 1;
-}
-/* !======= Конец стилизации кнопок (общие стили) =======! */
 
 /* ======= Стилизация заголовка (блока "Закрывающий тег") ======= */
 .header {
@@ -89,9 +38,10 @@
   align-items: center;
   gap: 20px;
   background-color: #fff;
-  font-family: var(--font-accent), sans-serif;
+  font-family: var(--font-accent), fantasy;
   text-transform: uppercase;
   padding: clamp(120px, calc(0.75117vw + 117px), 128px) 0;
+  border: var(--border, 2px solid #000);
 }
 
 .header__title {
@@ -117,30 +67,62 @@
 .block_card__title {
   padding: 3px 10px;
   font-size: 18px;
-  font-variation-settings: 'wght' var(--font-weight-title);
+  font-variation-settings: 'wght' var(--font-weight-title, 700);
   background-color: #fff;
-  min-height: 31px;
   align-content: center;
+  line-height: 1.3;
+  border: var(--border, 2px solid #000);
 }
 
 .block_card__image {
   width: 100%;
   height: 100%;
-  max-height: clamp(375px, calc(30.14vw + 262px), 696px);
 }
+
+/* ====== Набор фильтров - 7 штук ====== */
+.filter_blur {
+  filter: blur(10px);
+}
+
+.filter_contrast {
+  filter: contrast(30%);
+}
+
+.filter_sepia {
+  filter: sepia(80%);
+}
+
+.filter_invert {
+  filter: invert(0.7);
+}
+
+.filter_grayscale {
+  filter: grayscale(0.7);
+}
+
+.filter_saturate {
+  filter: saturate(158%);
+}
+
+.filter_multiple {
+  filter: saturate(58%) blur(10px) invert(0.7);
+}
+/* !===== Конец набора фильтров =====! */
 
 .block_card__image-wrapper {
   position: relative;
+  height: clamp(375px, calc(30.14vw + 262px), 696px);
+  border: var(--border, 2px solid #000);
 }
 
 .block_card__marker {
   position: absolute;
   top: 25px;
-  right: 25px;
-  font-family: var(--font-accent), sans-serif;
+  right: clamp(13px, calc(8.77px + 1.13vw), 25px);
+  font-family: var(--font-accent), fantasy;
   font-size: 14px;
   text-transform: lowercase;
-
+  opacity: 0.5;
   -webkit-text-stroke: 1px #fff;
   text-stroke: 1px #fff;
   @supports not ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
@@ -151,18 +133,14 @@
   }
 }
 
-.block_card__description-text {
-  font-size: 18px;
-  padding: 25px 25px 0 25px;
-  line-height: 1.18;
+.block_card__description {
+  border: var(--border, 2px solid #000);
 }
 
-.block_card__button {
-  padding: 25px;
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  justify-self: right;
+.block_card__description-text {
+  font-size: 18px;
+  padding: 26px 25px 0 25px;
+  line-height: 1.182;
 }
 
 /* !====== Стилизация кнопки с сердцем ======! */
@@ -184,120 +162,71 @@
 .sparks {
   opacity: 0;
 }
-
-.core, .main-body {
-  fill: transparent;
-  transition: fill 0.3s linear;
-}
-
-.card__icon-button:hover .core {
-  fill: var(--contour-color);
-  transition-delay: 0s;
-}
-
-.card__icon-button:not(:hover) .core,
-.card__icon-button:not(:active) .core {
-  transition-delay: 0.03s;
-}
-
-.card__icon-button:hover .main-body {
-  fill: var(--contour-color);
-  transition-delay: 0s;
-}
-
-.card__icon-button:not(:hover) .main-body,
-.card__icon-button:not(:active) .main-body {
-  transition-delay: 0.05s;
-}
-
-.card__icon-button:active .core,
-.card__icon-button:active .main-body {
-  fill: var(--animation-fill-color);
-}
-
-.card__icon-button:focus {
-  outline: none;
-}
-
-.card__icon-button:focus-visible {
-  /*outline: 2px solid #000;*/
-  border-color: #000;
-}
-
-/* ====== Блок анимации ====== */
-.like-icon.is-liked .core {
-  fill: var(--animation-fill-color);
-  transition: fill 0.3s linear;
-}
-
-.like-icon.is-liked .main-body {
-  fill: var(--animation-fill-color);
-  transition: fill 0.3s linear 0.03s;
-}
-
-.like-icon:not(.is-liked) .core {
-  transition: fill 0.3s linear;
-  transition-delay: 0.03s;
-}
-
-.like-icon:not(.is-liked) .main-body {
-  transition: fill 0.3s linear;
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--animation-fill-color);
-  transition: fill 0.3s linear 0.06s;
-}
-
-.like-icon:not(.is-liked) .contour {
-  transition: fill 0.1s linear;
-}
-
-.like-icon.is-liked .heart {
-  animation: heart-scale 0.3s ease-in 0.1s 1;
-  transform-origin: center;
-}
-
-.like-icon.is-liked .sparks {
-  animation: sparks-show 0.3s ease-in 0.3s 1;
-}
-
-@keyframes heart-scale {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.25);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes sparks-show {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-/* !====== Конец блока анимации ======! */
-
 /* !====== Конец стилизации кнопки с сердцем ======! */
 
+/* ======= Стилизация кнопок (общие стили) ======= */
+.button {
+  position: relative;
+  background: #fff;
+  border: none;
+  padding: 0;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background__button-accent, #000);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 0 #000;
+}
+
+.button__text {
+  font-family: var(--font-accent), fantasy;
+  font-size: 14px;
+  position: relative;
+  color: var(--color__button-accent, #fff);
+  mix-blend-mode: difference;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+/* !======= Конец стилизации кнопок (общие стили) =======! */
+
+.block_card__button {
+  padding: 26px 25px 25px 0;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-self: right;
+}
+
 .card__like-button {
-  border: var(--border);
+  border: var(--border, 2px solid #000);
   width: 130px;
 }
 /* !====== Конец стилизации блока карточки ======! */
 
 /* ====== Стилизация блока "Сохранить на память" ====== */
 .section_save {
-  padding-top: 54px;
+  padding-top: 50px;
   padding-bottom: 100px;
   display: flex;
   justify-content: center;
@@ -306,7 +235,7 @@
 .button__save {
   height: clamp(55px, calc(84px - 29 * (100vw - 375px) / 1065), 84px);
   width: clamp(306px, calc(306px + 29 * (100vw - 375px) / 1065), 335px);
-  border: var(--border);
+  border: var(--border, 2px solid #000);
   display: flex;
   gap: 4px;
   flex-direction: row;
@@ -322,14 +251,14 @@
 }
 
 .floppy use {
-  fill: var(--color__button-accent);
+  fill: var(--color__button-accent, #fff);
 }
 /* !===== Конец стилизации иконки дискеты =====! */
 /* !====== Конец стилизации блока "Сохранить на память" ======! */
 
 /* ====== Стилизация диалогового окна ====== */
 .dialog__save {
-  border: var(--border);
+  border: var(--border, 2px solid #000);
   /*padding: 30px clamp(30px, calc(46px - 1.13vw), 42px);*/
   padding: 30px;
   width: clamp(341px, calc(337px + 1.13vw), 353px);
@@ -339,7 +268,7 @@
 .dialog__save[open] .dialog__save-title {
   display: grid;
   grid-template-columns: 39px 1fr;
-  gap: 13px;
+  gap: 17px;
 }
 
 .dialog__save[open]::backdrop {
@@ -358,56 +287,34 @@
 }
 
 .dialog__save-title-text {
-  font-family: var(--font-accent), sans-serif;
+  font-family: var(--font-accent), fantasy;
   font-size: 14px;
   text-transform: uppercase;
   line-height: 1.5;
 }
 
 .dialog__save-close {
-  font-family: var(--font-accent), sans-serif;
+  font-family: var(--font-accent), fantasy;
   font-size: 14px;
   text-transform: uppercase;
-  border: var(--border);
+  border: var(--border, 2px solid #000);
   width: 100%;
   height: 38px;
 }
 /* !===== Конец стилизации диалогового окна =====! */
 
-/* ====== Набор фильтров - 7 штук ====== */
-.filter_start {
-  filter: blur(10px);
-}
-
-.filter_think {
-  filter: contrast(30%);
-}
-
-.filter_working {
-  filter: sepia(80%);
-}
-
-.filter_theory {
-  filter: invert(0.7);
-}
-
-.filter_strategy {
-  filter: grayscale(0.7);
-}
-
-.filter_stop {
-  filter: saturate(158%);
-}
-
-.filter_now {
-  filter: saturate(58%) blur(10px) invert(0.7);;
-}
-/* !===== Конец набора фильтров =====! */
-
 /* ===== Блок для адаптивной верстки ===== */
 @media (width < 376px) {
   .section {
     width: 100vw;
+  }
+
+  .block_card__title {
+    padding: 1px 10px;
+  }
+
+  .block_card__description-text {
+    line-height: 1.173;
   }
 
   .dialog__save {
